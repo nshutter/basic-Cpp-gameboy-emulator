@@ -62,12 +62,6 @@
 #include <utility>       // Utility functions (std::move, std::swap, etc.)
 #include <limits>        // Numeric limits
 
-// C++20 and beyond (optional, if your compiler supports it)
-#include <span>          // std::span (C++20)
-#include <ranges>        // Ranges (C++20)
-#include <concepts>      // Concepts (C++20)
-
-
 // Other utility headers
 #include <random>        // Random number generation
 #include <exception>     // Base exception class

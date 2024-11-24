@@ -2,5 +2,6 @@
     "files.associations": {
         "format": "cpp",
         "xstring": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe"
 }
