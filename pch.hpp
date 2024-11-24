@@ -1,5 +1,6 @@
 #ifndef PCH_HPP
 #define PCH_HPP
+#pragma once 
 
 // C++ standard library headers
 
@@ -65,7 +66,7 @@
 #include <span>          // std::span (C++20)
 #include <ranges>        // Ranges (C++20)
 #include <concepts>      // Concepts (C++20)
-#include <coroutine>     // Coroutines (C++20)
+
 
 // Other utility headers
 #include <random>        // Random number generation
@@ -74,4 +75,4 @@
 #include <locale>        // Locale support
 #include <thread>        // Thread support
 
-#endif // PCH_HPP
+#endif //
