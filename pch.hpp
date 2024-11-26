@@ -1,72 +1,170 @@
 #ifndef PCH_HPP
 #define PCH_HPP
-#pragma once 
+#pragma once
 
 // C++ standard library headers
 
 // General utilities
-#include <iostream>      // Input/Output streams
-#include <iomanip>       // Formatting for I/O
-#include <sstream>       // String streams
-#include <cassert>       // Assert macros
-#include <stdexcept>     // Standard exceptions
+#include <iostream> // Input/Output streams
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::flush;
+
+// String streams
+#include <sstream> // String streams
+using std::istringstream;
+using std::ostringstream;
+using std::stringstream;
+
+// Standard exceptions
+#include <stdexcept> // Standard exceptions
+using std::exception;
+using std::logic_error;
+using std::runtime_error;
 
 // Memory management
-#include <memory>        // Smart pointers (unique_ptr, shared_ptr, weak_ptr)
-#include <new>           // Placement new
-#include <cstdlib>       // Standard library general utilities (malloc, free, etc.)
-#include <cstddef>       // Size_t, nullptr, ptrdiff_t
+#include <memory> // Smart pointers (unique_ptr, shared_ptr, weak_ptr)
+using std::shared_ptr;
+using std::unique_ptr;
+using std::weak_ptr;
+
+// Placement new
+#include <new> // Placement new
+using std::nothrow;
+
+// Size_t, nullptr, ptrdiff_t
+#include <cstddef> // Size_t, nullptr, ptrdiff_t
+using std::nullptr_t;
+using std::ptrdiff_t;
+using std::size_t;
 
 // Containers
-#include <vector>        // std::vector
-#include <list>          // std::list
-#include <deque>         // std::deque
-#include <array>         // std::array
-#include <set>           // std::set, std::unordered_set
-#include <map>           // std::map, std::unordered_map
-#include <unordered_map> // std::unordered_map
-#include <unordered_set> // std::unordered_set
+#include <vector> // std::vector
+using std::vector;
+
+// List
+#include <list> // std::list
+using std::list;
+
+// Deque
+#include <deque> // std::deque
+using std::deque;
+
+// Array
+#include <array> // std::array
+using std::array;
+
+#include <set> // std::set, std::unordered_set
+using std::set;
+
+// Map and unordered map
+#include <map> // std::map, std::unordered_map
+using std::map;
 
 // Algorithms and iterators
-#include <algorithm>     // Algorithms like sort, find, etc.
-#include <iterator>      // Iterators and iterator utilities
-#include <functional>    // Function objects, bind, function, etc.
+#include <algorithm> // Algorithms like sort, find, etc.
+using std::copy;
+using std::find;
+using std::sort;
+
+// Iterators
+#include <iterator> // Iterators and iterator utilities
+using std::iterator;
+
+// Function objects
+#include <functional> // Function objects, bind, function, etc.
+using std::bind;
+using std::function;
 
 // Strings
-#include <string>        // std::string, std::wstring, string utilities
-#include <cstring>       // C-style string functions (memcpy, strcmp, etc.)
-#include <cwchar>        // Wide character functions (wcslen, etc.)
+#include <string> // std::string, std::wstring, string utilities
+using std::string;
+using std::wstring;
 
 // Numerics
-#include <cmath>         // Math functions (sqrt, sin, cos, etc.)
-#include <complex>       // Complex numbers
-#include <valarray>      // valarray and related utilities
+#include <cmath> // Math functions (sqrt, sin, cos, etc.)
+using std::cos;
+using std::sin;
+using std::sqrt;
+
+// Complex numbers
+#include <complex> // Complex numbers
+using std::complex;
+
+// Valarray
+#include <valarray> // valarray and related utilities
+using std::valarray;
 
 // Date and time
-#include <chrono>        // Time utilities, chrono literals, etc.
-#include <ctime>         // C-style time handling (ctime, time_t, etc.)
+#include <chrono> // Time utilities, chrono literals, etc.
+using std::chrono::duration;
+using std::chrono::system_clock;
+using std::chrono::time_point;
 
 // Multithreading
-#include <thread>        // std::thread, thread support
-#include <mutex>         // Mutex, locks
+#include <thread> // std::thread, thread support
+using std::thread;
+
+// Mutex
+#include <mutex> // Mutex, locks
+using std::lock_guard;
+using std::mutex;
+
+// Condition variable
 #include <condition_variable> // Condition variable
-#include <future>        // Futures, promises, async, etc.
-#include <atomic>        // Atomic operations and types
+using std::condition_variable;
+
+// Futures and promises
+#include <future> // Futures, promises, async, etc.
+using std::async;
+using std::future;
+using std::promise;
+
+// Atomic operations
+#include <atomic> // Atomic operations and types
+using std::atomic;
 
 // File system (C++17)
-#include <filesystem>    // File system operations (requires C++17 or later)
+#include <filesystem> // File system operations (requires C++17 or later)
+using std::filesystem::path;
 
 // Type traits and utilities
-#include <type_traits>   // Type traits, type manipulation
-#include <tuple>         // std::tuple, tuple utilities
-#include <utility>       // Utility functions (std::move, std::swap, etc.)
-#include <limits>        // Numeric limits
+#include <type_traits> // Type traits, type manipulation
+using std::enable_if;
+using std::is_same;
 
-// Other utility headers
-#include <random>        // Random number generation
-#include <exception>     // Base exception class
-#include <functional>    // Function pointers, bind, etc.
-#include <locale>        // Locale support
-#include <thread>        // Thread support
+// Tuple
+#include <tuple> // std::tuple, tuple utilities
+using std::make_tuple;
+using std::tuple;
 
-#endif //
+// Utility functions
+#include <utility> // Utility functions (std::move, std::swap, etc.)
+using std::move;
+using std::swap;
+
+// Numeric limits
+#include <limits> // Numeric limits
+using std::numeric_limits;
+
+// Random number generation
+#include <random> // Random number generation
+using std::mt19937;
+using std::uniform_int_distribution;
+using std::uniform_real_distribution;
+
+// Base exception class
+#include <exception> // Base exception class
+using std::exception;
+
+// Locale support
+#include <locale> // Locale support
+using std::locale;
+
+// Thread support
+#include <thread> // Thread support
+using std::thread;
+
+#endif // PCH_HPP
