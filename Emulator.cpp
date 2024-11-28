@@ -14,36 +14,7 @@ class Emulator
     public:
     Emulator()
     {
-
-    }
-    void Update()
-    {
-        //we can execute MaxCycles clock cycles per second at 60 frames per second
-        //define MaxCycles as const because it cannot change
-        const int MaxCycles = 69905;
-        //integer variable that counts how many times the update loop runs
-        int cyclesThisUpdate = 0;
-
-        while(cyclesThisUpdate < MaxCycles)
-        {
-                //this loop should be something like run the operation code, 
-                //update the clock, and set the upcoming state for the graphics 
-
-           // int cycles = ExecuteNextOpcode();
-           // cyclesThisUpdate += cycles;
-           // UpdateTimers(cycles);
-           // UpdateGraphics(cycles);
-           // DoInterupts(); 
-        }
-            //this function should draw the updated screen based on the new values
-        //RenderScreen(); 
-    }
-};
-
-
-int WinMain()
-{
-    ///Create gameboy cart representation in memory
+           ///Create gameboy cart representation in memory
     // with char array (string)
     BYTE m_CartridgeMemory[0x200000] ;
 
@@ -65,9 +36,41 @@ int WinMain()
     BYTE m_ScreenData[160][144][3];
 
     //repsentation of gameboy ram
-    BYTE m_Rom[0x1000];
+    BYTE m_Rom[0x1000]; 
+    }
+    void Update()
+    {
+
+    }
+};
+
+void Emulator::Update()
+    {
+        //we can execute MaxCycles clock cycles per second at 60 frames per second
+        //define MaxCycles as const because it cannot change
+        const int MaxCycles = 69905;
+        //integer variable that counts how many times the update loop runs
+        int cyclesThisUpdate = 0;
+
+        while(cyclesThisUpdate < MaxCycles)
+        {
+                //this loop should be something like run the operation code, 
+                //update the clock, and set the upcoming state for the graphics 
+
+           // int cycles = ExecuteNextOpcode();
+           // cyclesThisUpdate += cycles;
+           // UpdateTimers(cycles);
+           // UpdateGraphics(cycles);
+           // DoInterupts(); 
+        }
+            //this function should draw the updated screen based on the new values
+        //RenderScreen(); 
+    }
 
 
+int WinMain()
+{
+    unique_ptr<Emulator> emulator(new Emulator); 
 
 
     return 0;
