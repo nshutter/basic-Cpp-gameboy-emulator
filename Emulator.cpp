@@ -40,7 +40,9 @@ class Emulator
     }
     void Update()
     {
-
+    }
+    void Emulator::WriteMemory(WORD address, BYTE data)
+    {
     }
 };
 
@@ -66,12 +68,35 @@ void Emulator::Update()
             //this function should draw the updated screen based on the new values
         //RenderScreen(); 
     }
+void Emulator::WriteMemory(WORD address, BYTE data)
+{
+    if (address < 0x8000)
+    {
+        //establish representation of read only memory
+    }
+
+    else if ((address >= 0xE000) && (address <0xFE00))
+    {
+        //if we write to echo ram we also write to ram 
+        m_Rom[address] = data; 
+        WriteMemory(address-0x2000, data);
+    }
+    else if ((address >=0xFEA0) && (address <0xFEFF))
+    {
+        //system reserved memory
+    }
+    else
+    {
+        m_Rom[address] = data; 
+        //freely write to this area in ram
+    }
+}
 
 
 int WinMain()
 {
-    unique_ptr<Emulator> emulator(new Emulator); 
-
+    
+    Emulator myEmulator; 
 
     return 0;
 }
