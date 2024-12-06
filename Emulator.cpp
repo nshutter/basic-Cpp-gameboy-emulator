@@ -13,7 +13,26 @@ class Emulator
 public:
     Emulator()
     {
-        /// Create gameboy cart representation in memory
+        
+    }
+    void Update()
+    {
+    }
+    void WriteMemory(WORD address, BYTE data)
+    {
+    }
+    BYTE ReadMemory(WORD address) const
+    {
+
+    }
+    void LoadRom(BYTE *m_CartridgeMemory, bool *m_MBC1, bool *m_MBC2)
+    {
+    }
+};
+
+Emulator::Emulator()
+{
+    /// Create gameboy cart representation in memory
         // with char array (string)
         BYTE m_CartridgeMemory[0x200000];
 
@@ -41,20 +60,26 @@ public:
         //and define bank switching type either m_MBC1 or M_MBC2
         bool m_MBC2 = false; 
         
-        //this variable tracks which ROM bank is active
-        // ROM bank 0 is always active therefor this value initialized to zero
+       /* 
+            this variable tracks which cartridge ROM bank is active
+            ROM bank 0 is always active therefor this value initialized to zero
+        */ 
         BYTE m_CurrentROMBank = 1; 
-    }
-    void Update()
-    {
-    }
-    void WriteMemory(WORD address, BYTE data)
-    {
-    }
-    void LoadRom(BYTE *m_CartridgeMemory, bool *m_MBC1, bool *m_MBC2)
-    {
-    }
-};
+
+        /*
+            this variable tracks how many RAM banks the game will use
+            as well as what RAM bank is currently active
+        */
+        BYTE m_RAMBanks[0x800];
+
+
+        //RAM banking is not used in MBC2 rom banking mode therefor 
+        // m_CurrentRamBank will always be zero
+        BYTE m_CurrentRAMBank=0; 
+
+        //initialize these variables to prevent null access
+        memset(m_RAMBanks, 0, sizeof(m_RAMBanks)); 
+}
 
 void Emulator::Update()
 {
@@ -102,7 +127,12 @@ void Emulator::WriteMemory(WORD address, BYTE data)
     }
 }
 
-void LoadRom(BYTE *m_CartridgeMemory, bool *m_MBC1, bool *m_MBC2)
+BYTE ReadMemory(WORD address) const
+    {
+        
+    }
+
+void Emulator::LoadRom(BYTE *m_CartridgeMemory, bool *m_MBC1, bool *m_MBC2)
 {
     // pointer to a file object named in
     FILE *in;
